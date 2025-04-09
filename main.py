@@ -1,8 +1,15 @@
 import random
 game = True
+class bcolors:
+     RED = '\033[91m'
+     GREEN = '\033[92m'
+     YELLOW = '\033[93m'
+     BLUE = '\033[94m'
+     PURPLE = '\033[95m'
+     ENDC = '\033[0m'
 def misty_forest():
     player_position = 0
-    zombie_position = -5
+    zombie_position = -15
     goal = 30
     torch_position = random.choice([2,35])
     compass_position = random.choice([5,35])
@@ -23,33 +30,35 @@ def misty_forest():
                continue
 
           if move == computer_choice:
-               print(f"You walked safely for {move} steps.")
+               print(bcolors.GREEN + f"You walked safely for {move} steps." + bcolors.ENDC)
                player_position += move
           else:
-               print("You have been detained. Try again")
+               print(bcolors.RED + "You have been detained. Try again" + bcolors.ENDC)
         
           if player_position == torch_position:
-               print("🔥 You found a torch! Next turn, the safe range is", computer_choice)
+               print("🔥🔥🔥🔥🔥 You found a torch! Next turn, the safe range is", computer_choice)
           elif player_position == compass_position:
-               print("🧭 You found a compass! You can take 2 more steps!")
+               print("🧭🧭🧭🧭🧭 You found a compass! You can take 2 more steps!")
                player_position += 2
           elif player_position == pitfall_position:
-               print("⚠️ You fell into a pitfall! Move back 3 steps.")
-               player_position -= 3
+               print("⚠️⚠️⚠️⚠️⚠️ You fell into a pitfall! Move back 1 steps.")
+               player_position -= 1
           elif player_position == windstorm_position:
                storm_effect = random.choice([-3, 3, 5])
-               print(f"🌪️ A windstorm has moved you {storm_effect} steps!")
+               print(f"🌪️🌪️🌪️🌪️🌪️ A windstorm has moved you {storm_effect} steps!")
                player_position += storm_effect
 
           print(f"Your position: {player_position}")
 
+          if player_position - zombie_position == 0:
+               print(bcolors.PURPLE + "🧟 Zombie! You are dead." + bcolors.ENDC)
+               break
+          elif player_position >= goal:
+               print(bcolors.BLUE + "🎉 Congratulations! You escaped from the Misty Forest!" + bcolors.ENDC)
+               break
+
           zombie_position += 1
-          print(f"The zombie is {player_position - zombie_position} steps away from you")
+          print("The zombie is " + bcolors.YELLOW + f"{player_position - zombie_position}"+ bcolors.ENDC + " steps away from you")
           print("-" * 60)
 
-          if player_position - zombie_position == 0:
-               print("🧟 Zombie! You are dead.")
-               game = False 
-              
-    print("🎉 Congratulations! You escaped from the Misty Forest!")
 misty_forest()
