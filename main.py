@@ -9,12 +9,16 @@ class bcolors:
      ENDC = '\033[0m'
 def misty_forest():
     player_position = 0
-    zombie_position = -15
+    zombie_position = -10
     goal = 30
-    torch_position = random.choice([2,25])
-    compass_position = random.choice([5,25])
+    torch_position = random.choice([1,25])
+    torch_position2 = random.choice([2,26])
+    compass_position = random.choice([3,27])
+    compass_position2 = random.choice([4,28])
     pitfall_position = random.choice([5,29])
-    windstorm_position = random.choice([5,29])
+    pitfall_position2 = random.choice([4,28])
+    windstorm_position = random.choice([3,27])
+    windstorm_position2 = random.choice([2,26])
 
     print("Escape from the Misty Forest!")
     print("You will: avoid zombies and reach the destination")
@@ -27,7 +31,15 @@ def misty_forest():
           if player_position == torch_position:
                print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 You found a torch! Next turn, the safe range is", computer_choice)
                print("~" * 60)
+          if player_position == torch_position2:
+               print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 You found a torch! Next turn, the safe range is", computer_choice)
+               print("~" * 60)
           elif player_position == compass_position:
+               print("🧭🧭🧭🧭🧭 You found a compass! You can take 2 more steps!🧭🧭🧭🧭🧭")
+               player_position += 2
+               print(f"Your position: {player_position}")
+               print("~" * 60)
+          elif player_position == compass_position2:
                print("🧭🧭🧭🧭🧭 You found a compass! You can take 2 more steps!🧭🧭🧭🧭🧭")
                player_position += 2
                print(f"Your position: {player_position}")
@@ -37,7 +49,18 @@ def misty_forest():
                player_position -= 1
                print(f"Your position: {player_position}")
                print("~" * 60)
+          elif player_position == pitfall_position2:
+               print("⚠️⚠️⚠️⚠️⚠️ You fell into a pitfall! Move back 1 steps.⚠️⚠️⚠️⚠️⚠️")
+               player_position -= 1
+               print(f"Your position: {player_position}")
+               print("~" * 60)
           elif player_position == windstorm_position:
+               storm_effect = random.choice([-3, 3, 5])
+               print(f"🌪️🌪️🌪️🌪️🌪️ A windstorm has moved you {storm_effect} steps!🌪️🌪️🌪️🌪️🌪️")
+               player_position += storm_effect
+               print(f"Your position: {player_position}")
+               print("~" * 60)
+          elif player_position == windstorm_position2:
                storm_effect = random.choice([-3, 3, 5])
                print(f"🌪️🌪️🌪️🌪️🌪️ A windstorm has moved you {storm_effect} steps!🌪️🌪️🌪️🌪️🌪️")
                player_position += storm_effect
@@ -55,7 +78,7 @@ def misty_forest():
           if move < 1 or move > 3:
                print("Invalid move. Please choose a number between 1 and 3.")
                continue
-
+          
           print(f"Your position: {player_position}") 
 
           zombie_position += 1
