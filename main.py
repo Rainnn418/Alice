@@ -11,28 +11,28 @@ def misty_forest():
     player_position = 0
     zombie_position = -10
     goal = 30
-    torch_position = random.choice([1,25])
-    torch_position2 = random.choice([2,26])
-    compass_position = random.choice([3,27])
-    compass_position2 = random.choice([4,28])
-    pitfall_position = random.choice([5,29])
-    pitfall_position2 = random.choice([4,28])
-    windstorm_position = random.choice([3,27])
-    windstorm_position2 = random.choice([2,26])
+    oldman_position = random.choice([1,15])
+    compass_position = random.choice([1,15])
+    pitfall_position = random.choice([1,15])
+    windstorm_position = random.choice([1,15])
+    oldman_position2 = random.choice([16,30])
+    compass_position2 = random.choice([16,30])
+    pitfall_position2 = random.choice([16,30])
+    windstorm_position2 = random.choice([16,30])
 
     print("Escape from the Misty Forest!")
     print("You will: avoid zombies and reach the destination")
-    print("Be sure not to take more than 3 steps at a time!!!")
+    print("There is a god who can help you. In each round, the god will choose a number from 123. If you have telepathy with her, she can let you move forward.")
     print("=" * 60)
 
     while player_position < goal:
           computer_choice = random.choice([1,2,3])
 
-          if player_position == torch_position:
-               print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 You found a torch! Next turn, the safe range is", computer_choice)
+          if player_position == oldman_position:
+               print("🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️ You meet an oldman, he told you that the number God would choose for the next round is", computer_choice)
                print("~" * 60)
-          if player_position == torch_position2:
-               print("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 You found a torch! Next turn, the safe range is", computer_choice)
+          if player_position == oldman_position2:
+               print("🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️🧙‍♂️ You meet an oldman, he told you that the number God would choose for the next round is", computer_choice)
                print("~" * 60)
           elif player_position == compass_position:
                print("🧭🧭🧭🧭🧭 You found a compass! You can take 2 more steps!🧭🧭🧭🧭🧭")
@@ -67,15 +67,16 @@ def misty_forest():
                print(f"Your position: {player_position}")
                print("~" * 60)
               
-          move = int(input("How many steps are you going to take?"))
+          guess = int(input("What number did you guess?"))
+          move = random.choice([1,2,3,4,5])
           
-          if move == computer_choice:
-               print(bcolors.GREEN + f"You walked safely for {move} steps." + bcolors.ENDC)
+          if guess == computer_choice:
+               print(bcolors.GREEN + f"Guess it! You walked safely for {move} steps." + bcolors.ENDC)
                player_position += move
           else:
-               print(bcolors.RED + "You have been detained. Try again" + bcolors.ENDC)
+               print(bcolors.RED + "Guess wrong. Try again" + bcolors.ENDC)
 
-          if move < 1 or move > 3:
+          if guess < 1 or guess > 3:
                print("Invalid move. Please choose a number between 1 and 3.")
                continue
           
