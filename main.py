@@ -10,20 +10,20 @@ class bcolors:
 def misty_forest():
     player_position = 0
     zombie_position = -10
-    goal = 35
-    oldman_position = random.randint(1, 35)
-    compass_position = random.randint(1, 17)
-    pitfall_position = random.randint(1, 17)
-    windstorm_position = random.randint(1, 17)
-    compass_position2 = random.randint(18, 35)
-    pitfall_position2 = random.randint(18, 35)
-    windstorm_position2 = random.randint(18, 35)
+    goal = 50
+    oldman_position = random.randint(1, 50)
+    compass_position = random.randint(1, 25)
+    pitfall_position = random.randint(1, 25)
+    windstorm_position = random.randint(1, 25)
+    compass_position2 = random.randint(26, 50)
+    pitfall_position2 = random.randint(26, 50)
+    windstorm_position2 = random.randint(26,50)
 
     oldman_used = False
 
     print(bcolors.PURPLE + "Escape from the Misty Forest!" + bcolors.ENDC)
-    print(bcolors.PURPLE + "You will: avoid zombies and reach the destination(35)" + bcolors.ENDC)
-    print(bcolors.PURPLE + "There is a god who can help you. In each round, the god will choose a number from 123. If you have telepathy with her, she can let you move forward." + bcolors.ENDC)
+    print(bcolors.PURPLE + "You will: avoid zombies and reach the destination(50)" + bcolors.ENDC)
+    print(bcolors.PURPLE + "There is a god who can help you. In each round, the god will choose a number from 1,2,3. If you have telepathy with her, she can let you move forward." + bcolors.ENDC)
     print("=" * 60)
  
     while player_position < goal:
@@ -68,7 +68,7 @@ def misty_forest():
 
           guess = input("What number did you guess?")
           move = random.choice([1, 2, 3, 4, 5])
-
+          
           if guess == computer_choice:
                print(bcolors.GREEN + f"Guess it! You walked safely for {move} steps." + bcolors.ENDC)
                player_position += move
